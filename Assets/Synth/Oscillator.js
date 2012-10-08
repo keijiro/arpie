@@ -2,7 +2,7 @@
 
 class Oscillator {
 	var multiplier = 4.0;
-	var modulation = 0.1;
+	var modulation = 0.0;
 
 	private var mx = 0.0;
 	private var cx = 0.0;

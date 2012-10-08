@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22667154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: 0, z: 0}
+  m_LocalPosition: {x: -7.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 700f5c5092d5e4c02a0b03afc35807db, type: 3}
   m_Name: 
-  numberOfKeys: 20
+  numberOfKeys: 16
   slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 2}
 --- !u!1 &230811290
 GameObject:
@@ -125,6 +125,7 @@ GameObject:
   - 92: {fileID: 230811294}
   - 124: {fileID: 230811295}
   - 81: {fileID: 230811293}
+  - 166: {fileID: 230811298}
   - 168: {fileID: 230811297}
   - 164: {fileID: 230811296}
   m_Layer: 0
@@ -165,7 +166,7 @@ Camera:
   far clip plane: 20
   field of view: 60
   orthographic: 1
-  orthographic size: 5.5
+  orthographic size: 5.30000019
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -228,6 +229,21 @@ AudioEchoFilter:
   m_DecayRatio: .300000012
   m_WetMix: .200000003
   m_DryMix: 1
+--- !u!166 &230811298
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230811290}
+  m_Enabled: 1
+  m_DryMix: .5
+  m_WetMix1: .100000001
+  m_WetMix2: .100000001
+  m_WetMix3: .100000001
+  m_Delay: 15
+  m_Rate: .800000012
+  m_Depth: .0299999993
+  m_FeedBack: 0
 --- !u!1 &399635666
 GameObject:
   m_ObjectHideFlags: 0

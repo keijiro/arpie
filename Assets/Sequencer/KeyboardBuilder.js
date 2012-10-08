@@ -8,6 +8,7 @@ function Start() {
 		var position = transform.position + Vector3.right * i;
 		var slot = Instantiate(slotPrefab, position, Quaternion.identity) as GameObject;
 		slot.GetComponent.<SlotController>().degree = i;
+		slot.audio.pan = 2.0 * i / numberOfKeys - 1.0;
 	}
 	Destroy(gameObject);
 }

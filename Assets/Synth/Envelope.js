@@ -1,7 +1,7 @@
 #pragma strict
 
 class Envelope {
-    var attack = 0.003;
+    var attack = 0.01;
     var release = 0.2;
     var current = 0.0;
     var amplifier = 1.0;
