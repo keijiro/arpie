@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Body
-  m_Shader: {fileID: 7, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: Eye Black
+  m_Shader: {fileID: 4800000, guid: 665eda512cdd345aea303b9f0bcfcc05, type: 3}
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:
@@ -23,4 +23,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: .509800494, g: .699999988, b: .452208668, a: 1}
+        second: {r: 0, g: 0, b: 0, a: 1}

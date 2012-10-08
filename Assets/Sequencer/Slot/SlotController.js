@@ -2,7 +2,7 @@
 
 static var baseNote = 53;
 static var intervals = [0, 2, 4, 7, 9];
-static var clipLength = 0.5;
+static var clipLength = 0.3;
 
 var degree = 0;
 
