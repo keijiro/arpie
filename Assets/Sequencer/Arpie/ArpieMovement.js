@@ -5,10 +5,6 @@ var interval = 1.0;
 private var time = 0.0;
 private var step = 0;
 
-function Start() {
-	interval = Random.Range(2, 10);
-}
-
 function Update() {
 	time += Time.deltaTime;
 
