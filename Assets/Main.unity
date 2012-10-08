@@ -128,6 +128,8 @@ GameObject:
   - 166: {fileID: 230811298}
   - 168: {fileID: 230811297}
   - 164: {fileID: 230811296}
+  - 114: {fileID: 230811299}
+  - 114: {fileID: 230811300}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -244,6 +246,32 @@ AudioChorusFilter:
   m_Rate: .800000012
   m_Depth: .0299999993
   m_FeedBack: 0
+--- !u!114 &230811299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230811290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a447fe9c9f904394ad76d7b3025f4b2, type: 3}
+  m_Name: 
+  vignetteIntensity: .375
+  shader: {fileID: 4800000, guid: 1f31e1939a6d94f90af6a748b12ffac1, type: 3}
+  gradTexture: {fileID: 2800000, guid: 10260761e2668455ba062902a53919cd, type: 3}
+--- !u!114 &230811300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 230811290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dd9e5caf6045479e81a065af7dc8ef5, type: 3}
+  m_Name: 
+  delay: .100000001
+  speed: .5
+  shader: {fileID: 4800000, guid: b124427ed77fa485287acca843f74f04, type: 3}
 --- !u!1 &399635666
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +293,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 399635666}
-  m_LocalRotation: {x: .130029529, y: .0864101276, z: -.0113761108, w: .98767215}
+  m_LocalRotation: {x: .130347341, y: .0518882237, z: -.00683121523, w: .990086198}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

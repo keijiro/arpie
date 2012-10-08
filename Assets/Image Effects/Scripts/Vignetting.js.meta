@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: 6a447fe9c9f904394ad76d7b3025f4b2
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - shader: {fileID: 4800000, guid: 1f31e1939a6d94f90af6a748b12ffac1, type: 3}
+  - gradTexture: {fileID: 2800000, guid: 10260761e2668455ba062902a53919cd, type: 3}
+  - noiseTexture: {fileID: 2800000, guid: ffa9c02760c2b4e8eb9814ec06c4b05b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
