@@ -1,12 +1,8 @@
 #pragma strict
 
 private static var colors = [
-	Color(0.5, 0.5, 1.0),
-	Color(0.5, 1.0, 0.5),
-	Color(0.5, 1.0, 1.0),
-	Color(1.0, 0.5, 0.5),
-	Color(1.0, 0.5, 1.0),
-	Color(1.0, 1.0, 0.5)
+	Color(0.7, 0.7, 0.8),
+	Color(0.8, 0.8, 0.8)
 ];
 
 static var counter = 0;

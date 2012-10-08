@@ -6,7 +6,7 @@ private var time = 0.0;
 private var step = 0;
 
 function Start() {
-	interval = Random.Range(1, 10);
+	interval = Random.Range(2, 10);
 }
 
 function Update() {
