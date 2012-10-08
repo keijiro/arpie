@@ -6,7 +6,7 @@ private var time = 0.0;
 private var step = 0;
 
 function Start() {
-	interval = Random.Range(1, 6);
+	interval = Random.Range(1, 10);
 }
 
 function Update() {
@@ -18,7 +18,7 @@ function Update() {
 	transform.localPosition.y = interval * Mathf.Abs(Mathf.Cos(param));
 
 	if (currentStep > step) {
-		transform.parent.gameObject.SendMessage("KeyOn");
+		transform.parent.gameObject.BroadcastMessage("KeyOn");
 		step = currentStep;
 	}
 }

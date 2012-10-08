@@ -97,7 +97,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22667154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: 0}
+  m_LocalPosition: {x: -9.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,13 +111,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 700f5c5092d5e4c02a0b03afc35807db, type: 3}
   m_Name: 
-  audioClips:
-  - {fileID: 8300000, guid: bd354731c8ce145119c173de480d07a5, type: 3}
-  - {fileID: 8300000, guid: 1fb7f2d83936d4c6f94bb43833a7550d, type: 3}
-  - {fileID: 8300000, guid: 85f2a94036a6f487e9ff9884d97b59c4, type: 3}
-  - {fileID: 8300000, guid: 3fcfe2de60bed480e8713c90661d7445, type: 3}
-  - {fileID: 8300000, guid: 455197b25527a4cc180a353b3aae9f51, type: 3}
-  - {fileID: 8300000, guid: 79d942736ddcb4f7890332c7a825504d, type: 3}
+  numberOfKeys: 20
   slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 2}
 --- !u!1 &230811290
 GameObject:
@@ -171,7 +165,7 @@ Camera:
   far clip plane: 20
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
