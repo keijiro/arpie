@@ -1,20 +1,18 @@
 #pragma strict
 
-private static var colors = [
-	Color(0.7, 0.7, 0.7),
-	Color(0.9, 0.9, 0.9)
-];
-
-static var counter = 0;
-
 private var vibe = 0.0;
 private var initialScale = 1.0;
 
 function Start() {
-	renderer.material.color = colors[counter];
-	if (++counter == colors.Length) counter = 0;
-
 	initialScale = transform.localScale.x;
+}
+
+function SetColor(index : int) {
+	if (index & 1) {
+		renderer.material.color = Color(0.9, 0.9, 0.9);
+	} else {
+		renderer.material.color = Color(0.7, 0.7, 0.7);
+	}
 }
 
 function Update() {
