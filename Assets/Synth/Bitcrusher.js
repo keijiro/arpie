@@ -4,8 +4,8 @@ class Bitcrusher {
     private var counter = 0;
     private var sampled = 0.0;
 
-    var interval = 4;
-    var mix = 1.0;
+    var interval = 3;
+    var mix = 0.4;
 
     function Run(input : float) {
         if (counter++ % interval == 0) {
