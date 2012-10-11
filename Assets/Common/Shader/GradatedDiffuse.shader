@@ -15,7 +15,7 @@ Shader "Custom/Gradated Diffuse" {
 		};
 
 		void vert (inout appdata_full v, out Input o) {
-			o.color = lerp(0, _Color, 0.5 * (v.vertex.y + 1.0));
+			o.color = lerp(half4(0, 0, 0, 0), _Color, 0.5 * (v.vertex.y + 1.0));
 		}
 
   		void surf (Input IN, inout SurfaceOutput o) {
