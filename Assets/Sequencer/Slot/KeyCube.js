@@ -3,16 +3,21 @@
 private var vibe = 0.0;
 private var initialScale = 1.0;
 
+static private var baseColors = [
+	Color(1.0, 1.0, 1.0),		// Pentatonic
+	Color(0.7, 1.0, 0.7),		// Diatonic
+	Color(0.7, 1.0, 1.0),		// Pentatonic + IIV
+	Color(0.7, 0.7, 1.0),		// Major blues
+	Color(1.0, 1.0, 0.7)		// Ryukyu
+];
+
 function Start() {
 	initialScale = transform.localScale.x;
 }
 
-function SetColor(index : int) {
-	if (index & 1) {
-		renderer.material.color = Color(0.9, 0.9, 0.9);
-	} else {
-		renderer.material.color = Color(0.7, 0.7, 0.7);
-	}
+function SetColor(scaleIndex : int, degree : int) {
+	var brightness = (degree & 1) ? 0.7 : 0.9;
+	renderer.material.color = baseColors[scaleIndex % baseColors.Length] * brightness;
 }
 
 function Update() {
