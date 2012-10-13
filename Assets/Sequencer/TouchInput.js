@@ -22,6 +22,8 @@ private function DoTouch(screenCoord : Vector3) {
 	if (Physics.Raycast(ray, hit) && hit.collider) {
 		if (hit.collider.name == "Key Cube") {
 			hit.transform.parent.BroadcastMessage("RemoveArpies");
+		} else if (hit.collider.name == "Reset Button") {
+			hit.transform.SendMessage("DoReset");
 		} else {
 			SpawnWithHit(hit);
 		}
