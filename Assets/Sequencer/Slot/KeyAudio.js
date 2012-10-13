@@ -30,11 +30,9 @@ function Start() {
 	var env = Envelope();
 	env.KeyOn();
 
-	var bit = Bitcrusher();
-
 	var samples = new float[SynthConfig.kSampleRate * clipLength];
 	for (var i = 0; i < samples.Length; i++) {
-		samples[i] = bit.Run(osc.Run()) * env.current;
+		samples[i] = osc.Run() * env.current;
 		env.Update();
 	}
 
