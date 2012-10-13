@@ -3,6 +3,7 @@
 var stepPerMin = 200.0;
 var interval = 1.0;
 var quantization = 0.8;
+var killFxPrefab : GameObject;
 
 private var phase = 0.0;
 private var step = 0;
@@ -31,4 +32,8 @@ function Update() {
 		transform.parent.gameObject.BroadcastMessage("KeyOn");
 		step = stepNew;
 	}
+}
+
+function RemoveArpies() {
+	enabled = false;
 }

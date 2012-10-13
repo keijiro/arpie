@@ -265,7 +265,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230811290}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dd9e5caf6045479e81a065af7dc8ef5, type: 3}
   m_Name: 
@@ -410,7 +410,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e471c1a0e315433582a449093e96698, type: 3}
   m_Name: 
-  prefab: {fileID: 100000, guid: 9542921d9afa7424492c8fe20c993d5a, type: 2}
+  arpiePrefab: {fileID: 100000, guid: 9542921d9afa7424492c8fe20c993d5a, type: 2}
 --- !u!1 &1349618551
 GameObject:
   m_ObjectHideFlags: 0

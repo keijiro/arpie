@@ -11,16 +11,13 @@ static private var scales = [
 	[0, 4, 5, 7, 11]			// Ryukyu
 ];
 
-private var intervals = scales[0];
-private var degree = 0;
+private var clip : AudioClip;
 
 function SetKey(scaleIndex : int, degree : int) {
-	intervals = scales[scaleIndex % scales.Length];
-	this.degree = degree;
-}
+	var intervals = scales[scaleIndex % scales.Length];
 
-function Start() {
 	degree += intervals.Length - 2;
+
 	var interval = intervals[degree % intervals.Length];
 	var octave = degree / intervals.Length;
 
@@ -36,10 +33,10 @@ function Start() {
 		env.Update();
 	}
 
-	audio.clip = AudioClip.Create("note", SynthConfig.kSampleRate * clipLength, 1, SynthConfig.kSampleRate, false, false);
-	audio.clip.SetData(samples, 0);
+	clip = AudioClip.Create("note", SynthConfig.kSampleRate * clipLength, 1, SynthConfig.kSampleRate, false, false);
+	clip.SetData(samples, 0);
 }
 
 function KeyOn() {
-	audio.PlayOneShot(audio.clip);
+	audio.PlayOneShot(clip);
 }
