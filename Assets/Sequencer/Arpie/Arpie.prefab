@@ -329,7 +329,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bda3619ace5c433388878f7a40a963f, type: 3}
   m_Name: 
+  stepPerMin: 200
   interval: 1
+  quantization: .800000012
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
