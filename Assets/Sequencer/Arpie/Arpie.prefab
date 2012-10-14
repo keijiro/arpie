@@ -320,6 +320,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1a7bafeb2456542b598d205e41a5b7ff, type: 3}
   m_Name: 
+  colors:
+  - {r: .811764717, g: .164297923, b: .0936651751, a: 0}
+  - {r: .843137264, g: .843137264, b: 0, a: 0}
+  - {r: .1179858, g: .674509823, b: .0589606129, a: 0}
+  - {r: 0, g: .627601743, b: .858823538, a: 0}
+  - {r: .102317274, g: .121129766, b: .713725507, a: 0}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
