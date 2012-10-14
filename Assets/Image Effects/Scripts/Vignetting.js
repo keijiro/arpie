@@ -12,6 +12,10 @@ class Vignetting extends PostEffectsBase {
 
     private var material : Material;
 
+    function Awake() {
+        enabled = (QualitySettings.GetQualityLevel() > 1);
+    }
+
     function CheckResources() {
         material = CheckShaderAndCreateMaterial(shader, material);
         return CheckSupport();
