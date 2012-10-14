@@ -19,6 +19,11 @@ function Start() {
 
 #endif
 
+//	PlayerPrefs.DeleteKey("launch count");
+	PlayerPrefs.SetInt("launch count", PlayerPrefs.GetInt("launch count") + 1);
+
+	yield;
+	yield;
 	yield;
 
 	Application.LoadLevel(1);

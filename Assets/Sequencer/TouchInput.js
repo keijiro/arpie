@@ -1,5 +1,8 @@
 #pragma strict
 
+static var spawnCount = 0;
+static var cubeCount = 0;
+
 var arpiePrefab : GameObject;
 
 function Update() {
@@ -22,10 +25,12 @@ private function DoTouch(screenCoord : Vector3) {
 	if (Physics.Raycast(ray, hit) && hit.collider) {
 		if (hit.collider.name == "Key Cube") {
 			hit.transform.parent.BroadcastMessage("RemoveArpies");
+			cubeCount++;
 		} else if (hit.collider.name == "Reset Button") {
 			hit.transform.SendMessage("DoReset");
 		} else {
 			SpawnWithHit(hit);
+			spawnCount++;
 		}
 	}
 }
