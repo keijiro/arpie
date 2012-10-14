@@ -5,7 +5,7 @@ PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   AndroidProfiler: 0
-  defaultScreenOrientation: 2
+  defaultScreenOrientation: 3
   targetDevice: 2
   targetGlesGraphics: 1
   targetResolution: 0
@@ -85,13 +85,19 @@ PlayerSettings:
   uIStatusBarHidden: 1
   uIExitOnSuspend: 0
   uIStatusBarStyle: 0
-  iPhoneSplashScreen: {fileID: 0}
-  iPhoneHighResSplashScreen: {fileID: 0}
-  iPhoneTallHighResSplashScreen: {fileID: 0}
-  iPadPortraitSplashScreen: {fileID: 0}
-  iPadHighResPortraitSplashScreen: {fileID: 0}
-  iPadLandscapeSplashScreen: {fileID: 0}
-  iPadHighResLandscapeSplashScreen: {fileID: 0}
+  iPhoneSplashScreen: {fileID: 2800000, guid: cf9815c02f87745ab9442bb12919e771, type: 3}
+  iPhoneHighResSplashScreen: {fileID: 2800000, guid: 00058980db8694b8186ba3e3a44751ec,
+    type: 3}
+  iPhoneTallHighResSplashScreen: {fileID: 2800000, guid: d8dccdefd82b049108dd7e7fb04ef08c,
+    type: 3}
+  iPadPortraitSplashScreen: {fileID: 2800000, guid: 086416242c0004cdaaaeeab19ab49c49,
+    type: 3}
+  iPadHighResPortraitSplashScreen: {fileID: 2800000, guid: 3f981566a1273459eb6166bb27593446,
+    type: 3}
+  iPadLandscapeSplashScreen: {fileID: 2800000, guid: 80abfde95143d486fa6a2e2fc9018326,
+    type: 3}
+  iPadHighResLandscapeSplashScreen: {fileID: 2800000, guid: c81b9fe4d4f7a47398e89e70e8a8ac40,
+    type: 3}
   AndroidTargetDevice: 0
   AndroidSplashScreenScale: 0
   AndroidKeystoreName: 
