@@ -112,7 +112,10 @@ PlayerSettings:
       m_Size: 72
     - m_Icon: {fileID: 2800000, guid: 46fb56ecf94af4d319da2f0af60cca08, type: 3}
       m_Size: 57
-  m_BuildTargetBatching: []
+  m_BuildTargetBatching:
+  - m_BuildTarget: iPhone
+    m_StaticBatching: 1
+    m_DynamicBatching: 1
   webPlayerTemplate: APPLICATION:Default
   m_TemplateCustomTags: {}
   wiiRegion: 1
