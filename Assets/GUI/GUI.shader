@@ -4,8 +4,10 @@ Shader "Custom/GUI" {
 		_Color ("Color", Color) = (1, 1, 1, 1)
 	}
 	SubShader {
-		Tags { "RenderType"="Transparent" }
+		Tags { "Queue"="Transparent" }
 		Pass {
+			ZWrite Off
+			Fog { Mode off }
 			Blend SrcAlpha OneMinusSrcAlpha
 
 			GLSLPROGRAM
