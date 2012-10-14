@@ -1,6 +1,8 @@
 #pragma strict
 
 function Start() {
+	yield;
+
 #if UNITY_IPHONE
 
     if (SystemInfo.processorCount == 1) {
@@ -22,7 +24,6 @@ function Start() {
 //	PlayerPrefs.DeleteKey("launch count");
 	PlayerPrefs.SetInt("launch count", PlayerPrefs.GetInt("launch count") + 1);
 
-	yield;
 	yield;
 	yield;
 
