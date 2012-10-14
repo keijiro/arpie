@@ -14,12 +14,7 @@ function Start() {
 
 #elif UNITY_ANDROID
 
-    if (SystemInfo.processorCount == 1) {
-		QualitySettings.SetQualityLevel(1);
-	} else {
-        QualitySettings.SetQualityLevel(2);
-	}
-
+	QualitySettings.SetQualityLevel(1);
 	SynthConfig.kSampleRate = AudioSettings.outputSampleRate;
 
 #endif
