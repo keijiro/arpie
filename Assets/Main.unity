@@ -125,7 +125,6 @@ GameObject:
   - 92: {fileID: 230811294}
   - 124: {fileID: 230811295}
   - 81: {fileID: 230811293}
-  - 166: {fileID: 230811298}
   - 168: {fileID: 230811297}
   - 164: {fileID: 230811296}
   - 114: {fileID: 230811299}
@@ -205,20 +204,20 @@ AudioReverbFilter:
   m_GameObject: {fileID: 230811290}
   m_Enabled: 1
   m_DryLevel: 0
-  m_Room: -1000
+  m_Room: -1200
   m_RoomHF: -500
   m_RoomRolloff: 0
-  m_DecayTime: 3.92000008
+  m_DecayTime: 3.20000005
   m_DecayHFRatio: .699999988
-  m_ReflectionsLevel: -1230
-  m_ReverbLevel: -400
-  m_ReverbDelay: .0289999992
+  m_ReflectionsLevel: -700
+  m_ReverbLevel: -300
+  m_ReverbDelay: .0329999998
   m_Diffusion: 100
-  m_Density: 100
+  m_Density: 80
   m_HFReference: 5000
-  m_RoomLF: 0
+  m_RoomLF: -50
   m_LFReference: 250
-  m_ReflectionsDelay: 0
+  m_ReflectionsDelay: .200000003
   m_ReverbPreset: 27
 --- !u!168 &230811297
 AudioEchoFilter:
@@ -227,32 +226,17 @@ AudioEchoFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230811290}
   m_Enabled: 1
-  m_Delay: 321
+  m_Delay: 375
   m_DecayRatio: .300000012
-  m_WetMix: .200000003
-  m_DryMix: 1
---- !u!166 &230811298
-AudioChorusFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 230811290}
-  m_Enabled: 0
-  m_DryMix: .5
-  m_WetMix1: .100000001
-  m_WetMix2: .100000001
-  m_WetMix3: .100000001
-  m_Delay: 15
-  m_Rate: .800000012
-  m_Depth: .0299999993
-  m_FeedBack: 0
+  m_WetMix: .119999997
+  m_DryMix: .879999995
 --- !u!114 &230811299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230811290}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a447fe9c9f904394ad76d7b3025f4b2, type: 3}
   m_Name: 
@@ -265,7 +249,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 230811290}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dd9e5caf6045479e81a065af7dc8ef5, type: 3}
   m_Name: 
