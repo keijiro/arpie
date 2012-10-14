@@ -112,6 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700f5c5092d5e4c02a0b03afc35807db, type: 3}
   m_Name: 
   numberOfKeys: 16
+  panning: 1.20000005
+  volume: .349999994
+  highDecay: .0599999987
   slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 2}
 --- !u!1 &230811290
 GameObject:
