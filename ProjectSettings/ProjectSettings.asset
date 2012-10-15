@@ -65,7 +65,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   iPhoneBundleIdentifier: jp.radiumsoftware.arpie
-  iPhoneBundleVersion: 1.0
+  iPhoneBundleVersion: 1.01
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 6
   AndroidPreferredInstallLocation: 1
