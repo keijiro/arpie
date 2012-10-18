@@ -120,9 +120,9 @@ PlayerSettings:
       m_Size: 57
   - m_BuildTarget: Android
     m_Icons:
-    - m_Icon: {fileID: 2800000, guid: ac367200812ad41c4a044a74684d4367, type: 3}
+    - m_Icon: {fileID: 2800000, guid: 83f9fc8de321f4385bf9adf482078028, type: 3}
       m_Size: 72
-    - m_Icon: {fileID: 2800000, guid: 07e050d5fc2c14b5485049fb38086aa5, type: 3}
+    - m_Icon: {fileID: 2800000, guid: b84fe1d24e9244551bd16556cfeb4587, type: 3}
       m_Size: 48
   m_BuildTargetBatching:
   - m_BuildTarget: iPhone
@@ -141,7 +141,7 @@ PlayerSettings:
   wiiControllerCount: 1
   wiiFloatingPointExceptions: 0
   wiiScreenCrashDumps: 1
-  wiiMemoryLabelCount: 153
+  wiiMemoryLabelCount: 155
   wiiMemorySetup: 0000000000000000000000000000000000000000
   XboxTitleId: 
   XboxImageXexPath: 
