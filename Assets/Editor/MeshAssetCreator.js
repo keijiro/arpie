@@ -1,5 +1,9 @@
 #pragma strict
 
+// Removed temporary for the removal of MeshTopology.TriangleStrip on Unity 4.0 RC1
+
+#if false
+
 @MenuItem("Custom/Assets/Create Mesh (Quad)")
 static function CreateQuadMesh() {
     var mesh = Mesh();
@@ -27,3 +31,5 @@ static function CreateQuadMesh() {
     AssetDatabase.CreateAsset(mesh, "Assets/Quad.asset");
     AssetDatabase.Refresh();
 }
+
+#endif
