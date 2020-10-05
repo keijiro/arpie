@@ -18,7 +18,7 @@ function Awake() {
 function Start() {
 	sx *= Random.Range(0.9, 1.0);
 	sy *= Random.Range(0.9, 1.0);
-	renderer.material.color.a = 0.0;
+	GetComponent.<Renderer>().material.color.a = 0.0;
 
 	if (noteType == 0) {
 		yield WaitForSeconds(0.5);
@@ -53,5 +53,5 @@ function Update() {
 	var dy = 0.05 * Mathf.Sin(Time.time * sy);
 
 	transform.localPosition = Vector3(dx, dy, 0.0);
-	renderer.material.color.a = baseAlpha * param;
+	GetComponent.<Renderer>().material.color.a = baseAlpha * param;
 }

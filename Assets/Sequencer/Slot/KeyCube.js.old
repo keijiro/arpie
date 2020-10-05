@@ -18,7 +18,7 @@ function Awake() {
 
 function SetColor(scaleIndex : int, degree : int) {
 	var brightness = (degree & 1) ? 0.7 : 0.9;
-	mesh.renderer.material.color = baseColors[scaleIndex % baseColors.Length] * brightness;
+	mesh.GetComponent.<Renderer>().material.color = baseColors[scaleIndex % baseColors.Length] * brightness;
 }
 
 function Update() {

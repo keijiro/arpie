@@ -15,7 +15,7 @@ function Start() {
 		slot.GetComponentInChildren.<KeyAudio>().SetKey(0, i);
 		
 		var source = slot.GetComponentInChildren.<AudioSource>();
-		source.pan = panning * (i / numberOfKeys - 0.5);
+		source.panStereo = panning * (i / numberOfKeys - 0.5);
 		source.volume = volume - highDecay * i / numberOfKeys;
 	}
 	Destroy(gameObject);

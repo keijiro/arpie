@@ -38,5 +38,5 @@ function SetKey(scaleIndex : int, degree : int) {
 }
 
 function KeyOn() {
-	audio.PlayOneShot(clip);
+	GetComponent.<AudioSource>().PlayOneShot(clip);
 }
