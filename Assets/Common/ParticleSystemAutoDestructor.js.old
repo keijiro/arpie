@@ -1,5 +1,0 @@
-#pragma strict
-
-function LateUpdate() {
-	if (!GetComponent.<ParticleSystem>().IsAlive()) Destroy(gameObject);    
-}
