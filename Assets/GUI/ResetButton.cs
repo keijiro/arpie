@@ -30,7 +30,7 @@ public partial class ResetButton : MonoBehaviour
             GameObject slot = slots[i];
             slot.BroadcastMessage("RemoveArpies");
             slot.GetComponentInChildren<KeyCube>().SetColor(ResetButton.resetCount, i);
-            slot.GetComponentInChildren<KeyAudio>().SetKey(ResetButton.resetCount, i);
+            slot.GetComponentInChildren<Arpie.KeyAudio>().SetKey(ResetButton.resetCount, i);
             yield return new WaitForSeconds(0.03f);
             i++;
         }

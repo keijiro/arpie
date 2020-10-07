@@ -1,12 +1,8 @@
-using System.Collections;
+namespace Arpie.Synth {
 
-[System.Serializable]
-public class SynthConfig : object
+class Config
 {
-    public static int kSampleRate;
-    static SynthConfig()
-    {
-        SynthConfig.kSampleRate = 44100;
-    }
-
+    public const int SampleRate = 44100;
 }
+
+} // namespace Arpie.Synth

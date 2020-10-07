@@ -1,45 +1,42 @@
-using System.Collections;
+namespace Arpie.Synth {
 
-[System.Serializable]
-public class Envelope : object
+class Envelope
 {
-    public float attack;
-    public float release;
-    public float current;
-    public float amplifier;
-    private float delta;
+    public float Attack;
+    public float Release;
+    public float Current;
+    public float Amplifier;
+
+    float _delta;
+
+    public float Level => Current * Amplifier;
+
     public Envelope()
     {
-        this.attack = 0.018f;
-        this.release = 0.2f;
-        this.amplifier = 1f;
+        Attack = 0.018f;
+        Release = 0.2f;
+        Amplifier = 1f;
     }
 
-    public virtual void KeyOn()
-    {
-        this.delta = 1f / (this.attack * SynthConfig.kSampleRate);
-    }
+    public void KeyOn()
+      => _delta = 1 / (Attack * Config.SampleRate);
 
-    public virtual void Update()
+    public void Update()
     {
-        if (this.delta > 0f)
+        if (_delta > 0)
         {
-            this.current = this.current + this.delta;
-            if (this.current >= 1f)
+            Current += _delta;
+            if (Current >= 1)
             {
-                this.current = 1f;
-                this.delta = -1f / (this.release * SynthConfig.kSampleRate);
+                Current = 1;
+                _delta = -1 / (Release * Config.SampleRate);
             }
         }
         else
         {
-            this.current = UnityEngine.Mathf.Max(this.current + this.delta, 0f);
+            Current = UnityEngine.Mathf.Max(Current + _delta, 0);
         }
     }
-
-    public virtual float GetLevel()
-    {
-        return this.current * this.amplifier;
-    }
-
 }
+
+} // namespace Arpie.Synth

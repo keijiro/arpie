@@ -1,27 +1,24 @@
-using System.Collections;
+namespace Arpie.Synth {
 
-[System.Serializable]
-public class Oscillator : object
+class Oscillator
 {
-    private float cx;
-    private float step;
-    private static float kPi2;
-    public virtual void SetNote(int note)
+    float _cx;
+    float _step;
+
+    const float Pi2 = 6.28318530718f;
+
+    public void SetNote(int note)
     {
-        float freq = 440f * UnityEngine.Mathf.Pow(2f, (1f * (note - 69)) / 12f);
-        this.step = freq / SynthConfig.kSampleRate;
+        var freq = 440 * UnityEngine.Mathf.Pow(2, (note - 69) / 12.0f);
+        _step = freq / Config.SampleRate;
     }
 
-    public virtual float Run()
+    public float Run()
     {
-        this.cx = this.cx + this.step;
-        this.cx = this.cx - UnityEngine.Mathf.Floor(this.cx);
-        return UnityEngine.Mathf.Sin(Oscillator.kPi2 * this.cx);
+        _cx += _step;
+        _cx -= UnityEngine.Mathf.Floor(_cx);
+        return UnityEngine.Mathf.Sin(Pi2 * _cx);
     }
-
-    static Oscillator()
-    {
-        Oscillator.kPi2 = 6.28318530718f;
-    }
-
 }
+
+} // namespace Arpie.Synth
