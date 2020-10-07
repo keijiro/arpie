@@ -1,101 +1,97 @@
 using UnityEngine;
-using System.Collections;
+using UnityEngine.Serialization;
 
-[System.Serializable]
-public partial class NoteController : MonoBehaviour
+namespace Arpie {
+
+class NoteController : MonoBehaviour
 {
-    public int noteType;
-    public float baseAlpha;
-    private string state;
-    private float param;
-    private float sx;
-    private float sy;
-    public virtual void Awake()
+    enum NoteType { Spawn, Cube }
+
+    [SerializeField] NoteType _noteType = NoteType.Spawn;
+    [SerializeField] float _baseAlpha = 0;
+
+    enum State { FadeOut, FadeIn }
+
+    State _state;
+    float _sx, _sy, _param;
+
+    Material _material;
+
+    void SetAlpha(float alpha)
     {
-        if (PlayerPrefs.GetInt("launch count") > 2)
-        {
-            UnityEngine.Object.Destroy(this.gameObject);
-        }
+        if (_material == null)
+            _material = GetComponent<Renderer>().material;
+
+        var color = _material.color;
+        color.a = alpha;
+        _material.color = color;
     }
 
-    public virtual IEnumerator Start()
+    void Awake()
     {
-        this.sx = this.sx * Random.Range(0.9f, 1f);
-        this.sy = this.sy * Random.Range(0.9f, 1f);
+        if (PlayerPrefs.GetInt("launch count") > 2)
+            Destroy(gameObject);
+    }
 
-        {
-            float _10 = 0f;
-            Color _11 = this.GetComponent<Renderer>().material.color;
-            _11.a = _10;
-            this.GetComponent<Renderer>().material.color = _11;
-        }
-        if (this.noteType == 0)
+    System.Collections.IEnumerator Start()
+    {
+        _sx = Random.Range(5.4f, 6);
+        _sy = Random.Range(5.4f, 6);
+
+        SetAlpha(0);
+
+        if (_noteType == NoteType.Spawn)
         {
             yield return new WaitForSeconds(0.5f);
         }
-        else
+        else // _noteType == NoteType.Cube
         {
             while (TouchInput.spawnCount == 0)
-            {
                 yield return null;
-            }
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2);
         }
-        this.state = "fade in";
+
+        Debug.Log(TouchInput.spawnCount);
+
+        _state = State.FadeIn;
+
         while (true)
         {
-            if (this.noteType == 0)
+            if (_noteType == NoteType.Spawn)
             {
-                if (TouchInput.spawnCount > 0)
-                {
-                    break;
-                }
+                if (TouchInput.spawnCount > 0) break;
             }
-            else
+            else // _noteType == NoteType.Cube
             {
-                if (TouchInput.cubeCount > 0)
-                {
-                    break;
-                }
+                if (TouchInput.cubeCount > 0) break;
             }
             yield return null;
         }
-        this.state = "fade out";
+
+        _state = State.FadeOut;
+
         yield return new WaitForSeconds(0.5f);
-        UnityEngine.Object.Destroy(this.gameObject);
+
+        Destroy(gameObject);
     }
 
-    public virtual void Update()
+    void Update()
     {
-        if (this.state == "fade in")
-        {
-            this.param = Mathf.Min(this.param + (Time.deltaTime * 2), 1f);
-        }
-        else
-        {
-            if (this.state == "fade out")
-            {
-                this.param = Mathf.Max(this.param - (Time.deltaTime * 2), 0f);
-            }
-        }
-        float dx = 0.05f * Mathf.Sin(Time.time * this.sx);
-        float dy = 0.05f * Mathf.Sin(Time.time * this.sy);
-        this.transform.localPosition = new Vector3(dx, dy, 0f);
+        var t = Time.time;
+        var dt = Time.deltaTime;
 
-        {
-            float _12 = this.baseAlpha * this.param;
-            Color _13 = this.GetComponent<Renderer>().material.color;
-            _13.a = _12;
-            this.GetComponent<Renderer>().material.color = _13;
-        }
+        if (_state == State.FadeIn)
+            _param = Mathf.Min(_param + dt * 2, 1);
+        else // _state == State.FadeOut
+            _param = Mathf.Max(_param - dt * 2, 0);
+
+        SetAlpha(_baseAlpha * _param);
+
+        var dx = 0.05f * Mathf.Sin(t * _sx);
+        var dy = 0.05f * Mathf.Sin(t * _sy);
+
+        transform.localPosition = new Vector3(dx, dy, 0);
     }
-
-    public NoteController()
-    {
-        this.baseAlpha = 0.75f;
-        this.state = "";
-        this.sx = 6f;
-        this.sy = 6f;
-    }
-
 }
+
+} // namespace Arpie

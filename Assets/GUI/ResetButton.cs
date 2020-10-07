@@ -1,44 +1,44 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class ResetButton : MonoBehaviour
+namespace Arpie {
+
+class ResetButton : MonoBehaviour
 {
-    private static int resetCount;
-    private float initialScale;
-    private float vibe;
-    public virtual void Start()
+    static int _resetCount;
+
+    GameObject [] _slots;
+    float _initialScale;
+    float _vibe;
+
+    void Start()
     {
-        this.initialScale = this.transform.localScale.x;
+        _slots = GameObject.FindGameObjectsWithTag("Slot");
+        _initialScale = transform.localScale.x;
     }
 
-    public virtual void Update()
+    void Update()
     {
-        float param = this.vibe * Mathf.Sin(Time.time * 30f);
-        this.transform.localScale = Vector3.one * (this.initialScale * (1f + (0.5f * param)));
-        this.vibe = ExpEase.Out(this.vibe, 0f, -8f);
+        var param = 1 + 0.5f * _vibe * Mathf.Sin(Time.time * 30);
+        transform.localScale = Vector3.one * _initialScale * param;
+        _vibe = ExpEase.Out(_vibe, 0, -8);
     }
 
-    public virtual IEnumerator DoReset()
+    public System.Collections.IEnumerator DoReset()
     {
-        this.vibe = 1f;
-        ResetButton.resetCount++;
-        GameObject[] slots = GameObject.FindGameObjectsWithTag("Slot");
-        int i = 0;
-        while (i < slots.Length)
+        _vibe = 1;
+        _resetCount++;
+
+        var interval = new WaitForSeconds(0.03f);
+
+        for (var i = 0; i < _slots.Length; i++)
         {
-            GameObject slot = slots[i];
+            var slot = _slots[i];
             slot.BroadcastMessage("RemoveArpies");
-            slot.GetComponentInChildren<KeyCube>().SetColor(ResetButton.resetCount, i);
-            slot.GetComponentInChildren<Arpie.KeyAudio>().SetKey(ResetButton.resetCount, i);
-            yield return new WaitForSeconds(0.03f);
-            i++;
+            slot.GetComponentInChildren<KeyCube>().SetColor(_resetCount, i);
+            slot.GetComponentInChildren<KeyAudio>().SetKey(_resetCount, i);
+            yield return interval;
         }
     }
-
-    public ResetButton()
-    {
-        this.initialScale = 1f;
-    }
-
 }
+
+} // namespace Arpie
