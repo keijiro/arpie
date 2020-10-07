@@ -1,17 +1,27 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
-[System.Serializable]
-public partial class AppInitializer : MonoBehaviour
+namespace Arpie {
+
+class AppInitializer : MonoBehaviour
 {
-    public virtual IEnumerator Start()
+    const string LaunchCountKey = "launch count";
+
+    IEnumerator Start()
     {
         yield return null;
-        //	PlayerPrefs.DeleteKey("launch count");
-        PlayerPrefs.SetInt("launch count", PlayerPrefs.GetInt("launch count") + 1);
-        yield return null;
-        yield return null;
-        Application.LoadLevel(1);
-    }
 
+        // PlayerPrefs.DeleteKey(LaunchCountKey);
+
+        var count = PlayerPrefs.GetInt(LaunchCountKey);
+        PlayerPrefs.SetInt(LaunchCountKey, count + 1);
+
+        yield return null;
+        yield return null;
+
+        SceneManager.LoadScene(1);
+    }
 }
+
+} // namespace Arpie

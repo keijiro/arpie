@@ -1,39 +1,30 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class CameraAdjuster : MonoBehaviour
+namespace Arpie {
+
+class CameraAdjuster : MonoBehaviour
 {
-    public virtual void Awake()
+    void Awake()
     {
-        float ratio = (1f * Screen.width) / Screen.height;
+        var ratio = (float)Screen.width / Screen.height;
+        var camera = GetComponent<Camera>();
+        var pos = transform.localPosition;
+
         if (ratio < 1.48f)
         {
-            // Probably iPad.
-            this.GetComponent<Camera>().orthographicSize = 6f;
-
-            {
-                float _6 = 0.75f;
-                Vector3 _7 = this.transform.localPosition;
-                _7.y = _6;
-                this.transform.localPosition = _7;
-            }
+            // Probably iPad
+            camera.orthographicSize = 6f;
+            pos.y = 0.75f;
         }
-        else
+        else if (ratio > 1.58f)
         {
-            if (ratio > 1.58f)
-            {
-                // iPhone 5 and wide screen devices.
-                this.GetComponent<Camera>().orthographicSize = 5f;
-
-                {
-                    float _8 = -0.2f;
-                    Vector3 _9 = this.transform.localPosition;
-                    _9.y = _8;
-                    this.transform.localPosition = _9;
-                }
-            }
+            // iPhone 5 and wide screen devices
+            camera.orthographicSize = 5f;
+            pos.y = -0.2f;
         }
-    }
 
+        transform.localPosition = pos;
+    }
 }
+
+} // namespace Arpie

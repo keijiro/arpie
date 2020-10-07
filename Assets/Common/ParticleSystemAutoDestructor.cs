@@ -1,15 +1,18 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class ParticleSystemAutoDestructor : MonoBehaviour
+namespace Arpie {
+
+class ParticleSystemAutoDestructor : MonoBehaviour
 {
-    public virtual void LateUpdate()
-    {
-        if (!this.GetComponent<ParticleSystem>().IsAlive())
-        {
-            UnityEngine.Object.Destroy(this.gameObject);
-        }
-    }
+    ParticleSystem _particleSystem;
 
+    void Start()
+      => _particleSystem = GetComponent<ParticleSystem>();
+
+    void LateUpdate()
+    {
+        if (!_particleSystem.IsAlive()) Destroy(gameObject);
+    }
 }
+
+} // namespace Arpie
