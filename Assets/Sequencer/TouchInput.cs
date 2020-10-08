@@ -11,8 +11,14 @@ class TouchInput : MonoBehaviour
 
     void Update()
     {
+    #if (UNITY_IOS || UNITY_ANDROID) && !UNITY_EDITOR
+        foreach (var touch in Input.touches)
+            if (touch.phase == TouchPhase.Began)
+                DoTouch(touch.position);
+    #else
         if (Input.GetMouseButtonDown(0))
             DoTouch(Input.mousePosition);
+    #endif
     }
 
     void DoTouch(Vector3 screenCoord)

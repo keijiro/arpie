@@ -10,6 +10,10 @@ class AppInitializer : MonoBehaviour
 
     IEnumerator Start()
     {
+    #if UNITY_IOS
+        Application.targetFrameRate = 60;
+    #endif
+
         yield return null;
 
         // PlayerPrefs.DeleteKey(LaunchCountKey);
