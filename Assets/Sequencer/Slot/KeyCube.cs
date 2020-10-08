@@ -1,51 +1,53 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class KeyCube : MonoBehaviour
+namespace Arpie {
+
+class KeyCube : MonoBehaviour
 {
-    private float vibe;
-    private float spin;
-    private Transform mesh;
-    private static Color[] baseColors;
-     // Pentatonic
-     // Diatonic
-     // Pentatonic + IIV
-     // Major blues
-     // Ryukyu
-    public virtual void Awake()
+    static Color [] _baseColors = new []
     {
-        this.mesh = this.transform.Find("Mesh");
+        new Color(1, 1, 1),         // Pentatonic
+        new Color(0.7f, 1, 0.7f),   // Diatonic
+        new Color(0.7f, 1, 1),      // Pentatonic + IIV
+        new Color(0.7f, 0.7f, 1),   // Major blues
+        new Color(1, 1, 0.7f)       // Ryukyu
+    };
+
+    Transform _mesh;
+    Material _material;
+
+    float _vibe;
+    float _spin;
+
+    void Awake()
+    {
+        _mesh = transform.Find("Mesh");
+        _material = _mesh.GetComponent<Renderer>().material;
     }
 
-    public virtual void SetColor(int scaleIndex, int degree)
+    public void SetColor(int scaleIndex, int degree)
     {
-        float brightness = (degree & 1) != 0 ? 0.7f : 0.9f;
-        this.mesh.GetComponent<Renderer>().material.color = KeyCube.baseColors[scaleIndex % KeyCube.baseColors.Length] * brightness;
+        var br = (degree & 1) != 0 ? 0.7f : 0.9f;
+        _material.color = _baseColors[scaleIndex % _baseColors.Length] * br;
     }
 
-    public virtual void Update()
+    void Update()
     {
-        this.mesh.localRotation = Quaternion.AngleAxis(this.spin * 360f, Vector3.up);
-        this.mesh.localScale = (Vector3.one * (1f + ((0.2f * this.vibe) * Mathf.Sin(40f * Time.time)))) * (1f - (0.5f * this.spin));
-        this.vibe = ExpEase.Out(this.vibe, 0f, -8f);
-        this.spin = ExpEase.Out(this.spin, 0f, -8f);
+        var scale = 1 + 0.2f * _vibe * Mathf.Sin(40 * Time.time);
+        scale *= 1 - 0.5f * _spin;
+
+        _mesh.localRotation = Quaternion.AngleAxis(_spin * 360, Vector3.up);
+        _mesh.localScale = Vector3.one * scale;
+
+        _vibe = ExpEase.Out(_vibe, 0, -8);
+        _spin = ExpEase.Out(_spin, 0, -8);
     }
 
-    public virtual void KeyOn()
-    {
-        this.vibe = 1f;
-    }
+    void KeyOn()
+      => _vibe = 1;
 
-    public virtual void RemoveArpies()
-    {
-        this.vibe = 1f;
-        this.spin = 1f;
-    }
-
-    static KeyCube()
-    {
-        KeyCube.baseColors = new Color[] {new Color(1f, 1f, 1f), new Color(0.7f, 1f, 0.7f), new Color(0.7f, 1f, 1f), new Color(0.7f, 0.7f, 1f), new Color(1f, 1f, 0.7f)};
-    }
-
+    void RemoveArpies()
+      => (_vibe, _spin) = (1, 1);
 }
+
+} // namespace Arpie

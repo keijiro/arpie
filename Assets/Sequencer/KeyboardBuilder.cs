@@ -16,7 +16,7 @@ public partial class KeyboardBuilder : MonoBehaviour
         {
             Vector3 position = this.transform.position + (Vector3.right * i);
             GameObject slot = UnityEngine.Object.Instantiate(this.slotPrefab, position, Quaternion.identity) as GameObject;
-            slot.GetComponentInChildren<KeyCube>().SetColor(0, i);
+            slot.GetComponentInChildren<Arpie.KeyCube>().SetColor(0, i);
             slot.GetComponentInChildren<Arpie.KeyAudio>().SetKey(0, i);
             AudioSource source = slot.GetComponentInChildren<AudioSource>();
             source.panStereo = this.panning * ((i / this.numberOfKeys) - 0.5f);
