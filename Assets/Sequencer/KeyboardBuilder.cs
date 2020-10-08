@@ -1,37 +1,31 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class KeyboardBuilder : MonoBehaviour
+namespace Arpie {
+
+class KeyboardBuilder : MonoBehaviour
 {
-    public int numberOfKeys;
-    public float panning;
-    public float volume;
-    public float highDecay;
-    public GameObject slotPrefab;
-    public virtual void Start()
+    [SerializeField] int _numberOfKeys = 16;
+    [SerializeField] float _panning = 1.4f;
+    [SerializeField] float _volume = 0.35f;
+    [SerializeField] float _highDecay = 0.08f;
+    [SerializeField] GameObject _slotPrefab = null;
+
+    void Start()
     {
-        int i = 0;
-        while (i < this.numberOfKeys)
+        for (var i = 0; i < _numberOfKeys; i++)
         {
-            Vector3 position = this.transform.position + (Vector3.right * i);
-            GameObject slot = UnityEngine.Object.Instantiate(this.slotPrefab, position, Quaternion.identity) as GameObject;
-            slot.GetComponentInChildren<Arpie.KeyCube>().SetColor(0, i);
-            slot.GetComponentInChildren<Arpie.KeyAudio>().SetKey(0, i);
-            AudioSource source = slot.GetComponentInChildren<AudioSource>();
-            source.panStereo = this.panning * ((i / this.numberOfKeys) - 0.5f);
-            source.volume = this.volume - ((this.highDecay * i) / this.numberOfKeys);
-            i++;
+            var pos = transform.position + (Vector3.right * i);
+
+            var slot = Instantiate(_slotPrefab, pos, Quaternion.identity);
+            slot.GetComponentInChildren<KeyCube>().SetColor(0, i);
+            slot.GetComponentInChildren<KeyAudio>().SetKey(0, i);
+
+            var source = slot.GetComponentInChildren<AudioSource>();
+            source.panStereo = _panning * (i / _numberOfKeys - 0.5f);
+            source.volume = _volume - _highDecay * i / _numberOfKeys;
         }
-        UnityEngine.Object.Destroy(this.gameObject);
+        Destroy(gameObject);
     }
-
-    public KeyboardBuilder()
-    {
-        this.numberOfKeys = 16;
-        this.panning = 1.4f;
-        this.volume = 0.35f;
-        this.highDecay = 0.08f;
-    }
-
 }
+
+} // namespace Arpie

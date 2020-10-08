@@ -166,11 +166,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 700f5c5092d5e4c02a0b03afc35807db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfKeys: 16
-  panning: 1.2
-  volume: 0.35
-  highDecay: 0.06
-  slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 3}
+  _numberOfKeys: 16
+  _panning: 1.2
+  _volume: 0.35
+  _highDecay: 0.06
+  _slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 3}
 --- !u!1 &230811290
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e471c1a0e315433582a449093e96698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arpiePrefab: {fileID: 100000, guid: 9542921d9afa7424492c8fe20c993d5a, type: 3}
+  _arpiePrefab: {fileID: 100000, guid: 9542921d9afa7424492c8fe20c993d5a, type: 3}
 --- !u!1 &1302843023
 GameObject:
   m_ObjectHideFlags: 0

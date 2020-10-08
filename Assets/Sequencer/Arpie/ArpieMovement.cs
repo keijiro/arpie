@@ -1,64 +1,61 @@
 using UnityEngine;
 using System.Collections;
 
-[System.Serializable]
-public partial class ArpieMovement : MonoBehaviour
+namespace Arpie {
+
+class ArpieMovement : MonoBehaviour
 {
-    public float stepPerMin;
-    public float interval;
-    public float quantization;
-    public GameObject killFxPrefab;
-    private float phase;
-    private int step;
-    private bool delaying;
-    public virtual IEnumerator Start()
+    [SerializeField] float _stepPerMin = 200;
+    [SerializeField] float _quantization = 0.8f;
+
+    public float Interval { get; set; }
+
+    float _phase;
+    int _step;
+    bool _delaying;
+
+    IEnumerator Start()
     {
+        // Pause at start.
+        _delaying = true;
+
         // Quantize the current time.
-        float waitFor = (60f * (Mathf.FloorToInt((this.stepPerMin * Time.time) / 60f) + 1)) / this.stepPerMin;
+        var t0 = Time.time;
+        var step0 = 60 * (Mathf.FloorToInt(_stepPerMin * t0 / 60) + 1);
+        var waitFor = step0 / _stepPerMin;
+
         // Apply the quantization ratio.
-        waitFor = Mathf.Lerp(Time.time, waitFor, this.quantization);
+        waitFor = Mathf.Lerp(t0, waitFor, _quantization);
+
         // Wait for the timing.
-        while (Time.time < waitFor)
-        {
-            yield return null;
-        }
-        // Start!
-        this.delaying = false;
+        while (Time.time < waitFor) yield return null;
+
+        // Boom!
+        _delaying = false;
     }
 
-    public virtual void Update()
+    void Update()
     {
-        if (this.delaying)
-        {
-            return;
-        }
-        this.phase = this.phase + ((this.stepPerMin * Time.deltaTime) / (60f * this.interval));
+        if (_delaying) return;
 
+        var dt = Time.deltaTime;
+        _phase += _stepPerMin * dt / (60 * Interval);
+
+        var pos = transform.localPosition;
+        pos.y = Interval * Mathf.Abs(Mathf.Cos(_phase * Mathf.PI));
+        transform.localPosition = pos;
+
+        var stepNew = Mathf.FloorToInt(_phase + 0.5f);
+
+        if (stepNew > _step)
         {
-            float _14 = this.interval * Mathf.Abs(Mathf.Cos(this.phase * Mathf.PI));
-            Vector3 _15 = this.transform.localPosition;
-            _15.y = _14;
-            this.transform.localPosition = _15;
-        }
-        int stepNew = Mathf.FloorToInt(this.phase + 0.5f);
-        if (stepNew > this.step)
-        {
-            this.transform.parent.gameObject.BroadcastMessage("KeyOn");
-            this.step = stepNew;
+            transform.parent.gameObject.BroadcastMessage("KeyOn");
+            _step = stepNew;
         }
     }
 
-    public virtual void RemoveArpies()
-    {
-        this.enabled = false;
-    }
-
-    public ArpieMovement()
-    {
-        this.stepPerMin = 200f;
-        this.interval = 1f;
-        this.quantization = 0.8f;
-        this.delaying = true;
-    }
-
+    void RemoveArpies()
+      => enabled = false;
 }
+
+} // namespace Arpie

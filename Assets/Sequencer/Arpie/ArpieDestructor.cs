@@ -1,39 +1,40 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class ArpieDestructor : MonoBehaviour
+namespace Arpie {
+
+class ArpieDestructor : MonoBehaviour
 {
-    public GameObject explosion;
-    private Vector3 initPosition;
-    private float time;
-    public virtual void Update()
+    [SerializeField] GameObject _explosion = null;
+
+    Vector3 _initPosition;
+    float _time = 1;
+
+    void Update()
     {
-        this.time = this.time - (Time.deltaTime * 5f);
-        if (this.time > 0f)
+        _time -= Time.deltaTime * 5;
+
+        if (_time > 0)
         {
-            this.transform.position = this.initPosition + (((((Random.onUnitSphere * this.time) * this.time) * this.time) * this.time) * 0.4f);
-            this.transform.localScale = Vector3.one * (((1f - Mathf.Abs(Mathf.Cos((0.75f * Mathf.PI) * this.time))) * 1.2f) + 0.5f);
+            var vibe = _time * _time * _time * _time * 0.4f;
+
+            var scale = Mathf.Abs(Mathf.Cos(0.75f * Mathf.PI * _time));
+            scale = (1 - scale) * 1.2f + 0.5f;
+
+            transform.position = _initPosition + Random.onUnitSphere * vibe;
+            transform.localScale = Vector3.one * scale;
         }
-        else
+        else if (_time < -0.2f)
         {
-            if (this.time < -0.2f)
-            {
-                UnityEngine.Object.Instantiate(this.explosion, this.transform.position, this.transform.rotation);
-                UnityEngine.Object.Destroy(this.gameObject);
-            }
+            Instantiate(_explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
     }
 
-    public virtual void RemoveArpies()
+    void RemoveArpies()
     {
-        this.initPosition = this.transform.position;
-        this.enabled = true;
+        _initPosition = transform.position;
+        enabled = true;
     }
-
-    public ArpieDestructor()
-    {
-        this.time = 1f;
-    }
-
 }
+
+} // namespace Arpie

@@ -1,30 +1,34 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class ArpieColorChanger : MonoBehaviour
+namespace Arpie {
+
+class ArpieColorChanger : MonoBehaviour
 {
-    public Color[] colors;
-    public static Material[] materials;
-    public static int counter;
-    public virtual void Awake()
+    [SerializeField] Color[] _colors = null;
+
+    static Material[] _materials;
+    static int _counter;
+
+    void Awake()
     {
-        if (ArpieColorChanger.materials == null)
+        var renderer = GetComponent<Renderer>();
+
+        if (_materials == null)
         {
-            ArpieColorChanger.materials = new Material[this.colors.Length];
-            int i = 0;
-            while (i < this.colors.Length)
+            var sourceMaterial = renderer.material;
+
+            _materials = new Material[_colors.Length];
+
+            for (var i = 0; i < _colors.Length; i++)
             {
-                ArpieColorChanger.materials[i] = new Material(this.GetComponent<Renderer>().material);
-                ArpieColorChanger.materials[i].color = this.colors[i];
-                i++;
+                _materials[i] = new Material(sourceMaterial);
+                _materials[i].color = _colors[i];
             }
         }
-        this.GetComponent<Renderer>().material = ArpieColorChanger.materials[ArpieColorChanger.counter];
-        if (++ArpieColorChanger.counter == ArpieColorChanger.materials.Length)
-        {
-            ArpieColorChanger.counter = 0;
-        }
-    }
 
+        renderer.material = _materials[_counter];
+        _counter = (_counter + 1) % _materials.Length;
+    }
 }
+
+} // namespace Arpie

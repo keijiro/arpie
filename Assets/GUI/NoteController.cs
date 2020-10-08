@@ -46,12 +46,10 @@ class NoteController : MonoBehaviour
         }
         else // _noteType == NoteType.Cube
         {
-            while (TouchInput.spawnCount == 0)
+            while (TouchInput.SpawnCount == 0)
                 yield return null;
             yield return new WaitForSeconds(2);
         }
-
-        Debug.Log(TouchInput.spawnCount);
 
         _state = State.FadeIn;
 
@@ -59,11 +57,11 @@ class NoteController : MonoBehaviour
         {
             if (_noteType == NoteType.Spawn)
             {
-                if (TouchInput.spawnCount > 0) break;
+                if (TouchInput.SpawnCount > 0) break;
             }
             else // _noteType == NoteType.Cube
             {
-                if (TouchInput.cubeCount > 0) break;
+                if (TouchInput.CubeCount > 0) break;
             }
             yield return null;
         }

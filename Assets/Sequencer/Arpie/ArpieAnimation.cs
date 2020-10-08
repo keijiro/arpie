@@ -1,42 +1,37 @@
 using UnityEngine;
-using System.Collections;
 
-[System.Serializable]
-public partial class ArpieAnimation : MonoBehaviour
+namespace Arpie {
+
+class ArpieAnimation : MonoBehaviour
 {
-    private Quaternion initialRotation;
-    private float freq_rx;
-    private float freq_ry;
-    private float freq_s;
-    private bool noScaling;
-    public virtual void Start()
+    Quaternion _initialRotation;
+    float _freqX;
+    float _freqY;
+    float _freqS;
+
+    void Start()
     {
-        this.initialRotation = this.transform.localRotation;
-        this.freq_rx = Random.Range(7f, 13f);
-        this.freq_ry = Random.Range(7f, 13f);
-        this.freq_s = Random.Range(7f, 13f);
-        this.noScaling = QualitySettings.GetQualityLevel() < 2;
+        _initialRotation = transform.localRotation;
+        _freqX = Random.Range(7.0f, 13.0f);
+        _freqY = Random.Range(7.0f, 13.0f);
+        _freqS = Random.Range(7.0f, 13.0f);
     }
 
-    public virtual void Update()
+    void Update()
     {
-        this.transform.localRotation = (this.initialRotation * Quaternion.AngleAxis(10f * Mathf.Sin(Time.time * this.freq_ry), Vector3.up)) * Quaternion.AngleAxis(10f * Mathf.Sin(Time.time * this.freq_rx), Vector3.right);
-        if (!this.noScaling)
-        {
-            this.transform.localScale = Vector3.one * (1f + (0.1f * Mathf.Sin(this.freq_s * Time.time)));
-        }
+        var t = Time.time;
+
+        transform.localRotation =
+          _initialRotation *
+          Quaternion.AngleAxis(10 * Mathf.Sin(_freqY * t), Vector3.up) *
+          Quaternion.AngleAxis(10 * Mathf.Sin(_freqX * t), Vector3.right);
+
+        transform.localScale =
+          Vector3.one * (1 + 0.1f * Mathf.Sin(_freqS * t));
     }
 
-    public virtual void RemoveArpies()
-    {
-        this.enabled = false;
-    }
-
-    public ArpieAnimation()
-    {
-        this.freq_rx = 1f;
-        this.freq_ry = 1f;
-        this.freq_s = 1f;
-    }
-
+    void RemoveArpies()
+      => enabled = false;
 }
+
+} // namespace Arpie
