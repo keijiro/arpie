@@ -29,7 +29,7 @@ class NoteController : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.GetInt("launch count") > 2)
+        if (PlayerPrefs.GetInt("LaunchCount") > 2)
             Destroy(gameObject);
     }
 
