@@ -11,6 +11,7 @@
     #include "UnityCG.cginc"
 
     sampler2D _MainTex;
+    float4 _MainTex_ST;
     half4 _Color;
 
     void Vertex(float4 vertex : POSITION,
@@ -19,7 +20,7 @@
                 out float2 outUV : TEXCOORD0)
     {
         outVertex = UnityObjectToClipPos(vertex);
-        outUV = uv;
+        outUV = TRANSFORM_TEX(uv, _MainTex);
     }
 
     half4 Fragment(float4 vertex : SV_Position,
