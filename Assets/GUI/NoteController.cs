@@ -1,16 +1,14 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Arpie {
 
 class NoteController : MonoBehaviour
 {
     enum NoteType { Spawn, Cube }
+    enum State { FadeOut, FadeIn }
 
     [SerializeField] NoteType _noteType = NoteType.Spawn;
     [SerializeField] float _baseAlpha = 0;
-
-    enum State { FadeOut, FadeIn }
 
     State _state;
     float _sx, _sy, _param;
@@ -27,14 +25,14 @@ class NoteController : MonoBehaviour
         _material.color = color;
     }
 
-    void Awake()
-    {
-        if (PlayerPrefs.GetInt("LaunchCount") > 2)
-            Destroy(gameObject);
-    }
-
     System.Collections.IEnumerator Start()
     {
+        if (PlayerPrefs.GetInt("LaunchCount") > 2)
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+
         _sx = Random.Range(5.4f, 6);
         _sy = Random.Range(5.4f, 6);
 
@@ -75,7 +73,7 @@ class NoteController : MonoBehaviour
 
     void Update()
     {
-        var t = Time.time;
+        var t = Time.time + 10;
         var dt = Time.deltaTime;
 
         if (_state == State.FadeIn)

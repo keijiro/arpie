@@ -4,7 +4,7 @@ namespace Arpie {
 
 class CameraAdjuster : MonoBehaviour
 {
-    void Awake()
+    void Start()
     {
         var ratio = (float)Screen.width / Screen.height;
         var camera = GetComponent<Camera>();

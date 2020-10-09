@@ -23,7 +23,7 @@ class ResetButton : MonoBehaviour
         _vibe = ExpEase.Out(_vibe, 0, -8);
     }
 
-    public System.Collections.IEnumerator DoReset()
+    System.Collections.IEnumerator DoReset()
     {
         _vibe = 1;
         _resetCount++;
