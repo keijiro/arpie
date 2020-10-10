@@ -1,41 +1,24 @@
 namespace Arpie.Synth {
 
-class Envelope
+struct Envelope
 {
-    public float Attack;
-    public float Release;
-    public float Current;
-    public float Amplifier;
+    const float Attack = 0.018f;
+    const float Release = 0.2f;
 
+    float _current;
     float _delta;
 
-    public float Level => Current * Amplifier;
+    static public Envelope Default()
+      => new Envelope { _delta = 1 / (Attack * Config.SampleRate) };
 
-    public Envelope()
+    public float Run()
     {
-        Attack = 0.018f;
-        Release = 0.2f;
-        Amplifier = 1f;
-    }
+        _current += _delta;
 
-    public void KeyOn()
-      => _delta = 1 / (Attack * Config.SampleRate);
+        if (_delta > 0 && _current >= 1)
+            _delta = -1 / (Release * Config.SampleRate);
 
-    public void Update()
-    {
-        if (_delta > 0)
-        {
-            Current += _delta;
-            if (Current >= 1)
-            {
-                Current = 1;
-                _delta = -1 / (Release * Config.SampleRate);
-            }
-        }
-        else
-        {
-            Current = UnityEngine.Mathf.Max(Current + _delta, 0);
-        }
+        return UnityEngine.Mathf.Clamp01(_current);
     }
 }
 

@@ -1,6 +1,6 @@
 namespace Arpie.Synth {
 
-class Config
+static class Config
 {
     public const int SampleRate = 44100;
 }

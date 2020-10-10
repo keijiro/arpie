@@ -34,19 +34,13 @@ class KeyAudio : MonoBehaviour
         var interval = intervals[degree % intervals.Length];
         var octave = degree / intervals.Length;
 
-        var osc = new Synth.Oscillator();
-        osc.SetNote(_baseNote + octave * 12 + interval);
-
-        var env = new Synth.Envelope();
-        env.KeyOn();
+        var osc = Synth.Oscillator.Note(_baseNote + octave * 12 + interval);
+        var env = Synth.Envelope.Default();
 
         var samples = new float[(int)(Synth.Config.SampleRate * _clipLength)];
 
         for (var i = 0; i < samples.Length; i++)
-        {
-            samples[i] = osc.Run() * env.Current;
-            env.Update();
-        }
+            samples[i] = osc.Run() * env.Run();
 
         if (_clip != null) Destroy(_clip);
         _clip = AudioClip.Create("note", samples.Length, 1, Synth.Config.SampleRate, false); 
