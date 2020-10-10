@@ -18,9 +18,10 @@ class ResetButton : MonoBehaviour
 
     void Update()
     {
-        var param = 1 + 0.5f * _vibe * Mathf.Sin(Time.time * 30);
-        transform.localScale = Vector3.one * _initialScale * param;
         _vibe = ExpEase.Out(_vibe, 0, -8);
+
+        var scale = 1 + 0.5f * _vibe * Mathf.Sin(Time.time * 30);
+        transform.localScale = Vector3.one * _initialScale * scale;
     }
 
     System.Collections.IEnumerator DoReset()

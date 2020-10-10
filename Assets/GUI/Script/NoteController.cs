@@ -5,24 +5,17 @@ namespace Arpie {
 class NoteController : MonoBehaviour
 {
     enum NoteType { Spawn, Cube }
-    enum State { FadeOut, FadeIn }
 
     [SerializeField] NoteType _noteType = NoteType.Spawn;
-    [SerializeField] float _baseAlpha = 0;
 
-    State _state;
-    float _sx, _sy, _param;
+    float _fade, _param;
 
     Material _material;
 
     void SetAlpha(float alpha)
     {
-        if (_material == null)
-            _material = GetComponent<Renderer>().material;
-
-        var color = _material.color;
-        color.a = alpha;
-        _material.color = color;
+        if (_material == null) _material = GetComponent<Renderer>().material;
+        _material.color = new Color(1, 1, 1, alpha * 0.9f);
     }
 
     System.Collections.IEnumerator Start()
@@ -33,9 +26,6 @@ class NoteController : MonoBehaviour
             yield break;
         }
 
-        _sx = Random.Range(5.4f, 6);
-        _sy = Random.Range(5.4f, 6);
-
         SetAlpha(0);
 
         if (_noteType == NoteType.Spawn)
@@ -44,12 +34,11 @@ class NoteController : MonoBehaviour
         }
         else // _noteType == NoteType.Cube
         {
-            while (TouchInput.SpawnCount == 0)
-                yield return null;
+            while (TouchInput.SpawnCount == 0) yield return null;
             yield return new WaitForSeconds(2);
         }
 
-        _state = State.FadeIn;
+        _fade = 2;
 
         while (true)
         {
@@ -64,7 +53,7 @@ class NoteController : MonoBehaviour
             yield return null;
         }
 
-        _state = State.FadeOut;
+        _fade = -2;
 
         yield return new WaitForSeconds(0.5f);
 
@@ -73,19 +62,12 @@ class NoteController : MonoBehaviour
 
     void Update()
     {
+        _param = Mathf.Clamp01(_param + _fade * Time.deltaTime);
+        SetAlpha(_param);
+
         var t = Time.time + 10;
-        var dt = Time.deltaTime;
-
-        if (_state == State.FadeIn)
-            _param = Mathf.Min(_param + dt * 2, 1);
-        else // _state == State.FadeOut
-            _param = Mathf.Max(_param - dt * 2, 0);
-
-        SetAlpha(_baseAlpha * _param);
-
-        var dx = 0.05f * Mathf.Sin(t * _sx);
-        var dy = 0.05f * Mathf.Sin(t * _sy);
-
+        var dx = 0.05f * Mathf.Sin(t * 4.97f);
+        var dy = 0.05f * Mathf.Sin(t * 5.33f);
         transform.localPosition = new Vector3(dx, dy, 0);
     }
 }

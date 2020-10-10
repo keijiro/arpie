@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noteType: 0
-  _baseAlpha: 0.75
+  _baseAlpha: 0.9
 --- !u!1 &1282796864
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noteType: 1
-  _baseAlpha: 0.75
+  _baseAlpha: 0.9
 --- !u!1 &2020199978
 GameObject:
   m_ObjectHideFlags: 0
