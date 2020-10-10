@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 4d8d997c6f0988b4186d203f8ac52a4b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _shader: {fileID: 4800000, guid: e5002fdce4eb6734fa92a91fbf80a8c8, type: 3}
+  - _vignetteTexture: {fileID: 2800000, guid: 10260761e2668455ba062902a53919cd, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
