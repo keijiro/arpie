@@ -9,7 +9,6 @@ class PostFX : MonoBehaviour
     [SerializeField] float _fadingSpeed = 0.5f;
 
     [HideInInspector, SerializeField] Shader _shader = null;
-    [HideInInspector, SerializeField] Texture2D _vignetteTexture = null;
 
     Material _material;
 
@@ -23,16 +22,13 @@ class PostFX : MonoBehaviour
     }
 
     void Update()
-    {
-        _time += Time.deltaTime;
-    }
+      => _time += Time.deltaTime;
 
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         if (_material == null)
             _material = new Material(_shader);
 
-        _material.SetTexture("_VignetteTex", _vignetteTexture);
         _material.SetFloat("_Vignette", _vignette);
         _material.SetFloat("_Fading", Mathf.Clamp01(Fading));
 

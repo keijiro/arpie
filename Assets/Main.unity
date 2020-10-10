@@ -271,11 +271,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8d997c6f0988b4186d203f8ac52a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vignette: 0.65
+  _vignette: 0.4
   _fadingDelay: 0.1
   _fadingSpeed: 0.5
   _shader: {fileID: 4800000, guid: e5002fdce4eb6734fa92a91fbf80a8c8, type: 3}
-  _vignetteTexture: {fileID: 2800000, guid: 10260761e2668455ba062902a53919cd, type: 3}
 --- !u!124 &230811295
 Behaviour:
   m_ObjectHideFlags: 0
@@ -644,7 +643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noteType: 0
-  _baseAlpha: 0.9
 --- !u!1 &1282796864
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,7 +857,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _noteType: 1
-  _baseAlpha: 0.9
 --- !u!1 &2020199978
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,6 @@
     #include "UnityCG.cginc"
 
     sampler2D _MainTex;
-    sampler2D _VignetteTex;
-
     half _Vignette;
     half _Fading;
 
@@ -28,8 +26,8 @@
                    float2 uv : TEXCOORD0) : SV_Target
     {
         half4 src = tex2D(_MainTex, uv);
-        half vgn = tex2D(_VignetteTex, uv).a;
-        return lerp(src * (1 - vgn * _Vignette), 0, _Fading);
+        half amp = 1 - length(uv - 0.5) * _Vignette;
+        return lerp(src * amp, 0, _Fading);
     }
 
     ENDCG
