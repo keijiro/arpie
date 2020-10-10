@@ -1,83 +1,185 @@
 fileFormatVersion: 2
 guid: 92f2e214658ef458da57e838ba39a0f4
 ModelImporter:
-  serializedVersion: 14
-  fileIDToRecycleName:
-    100000: Box
-    100002: //RootNode
-    100004: Plane.1
-    100006: Plane.1.1
-    100008: Plane.2
-    100010: Plane
-    400000: Box
-    400002: //RootNode
-    400004: Plane.1
-    400006: Plane.1.1
-    400008: Plane.2
-    400010: Plane
-    2300000: Box
-    2300002: Plane.1
-    2300004: Plane.1.1
-    2300006: Plane.2
-    2300008: Plane
-    3300000: Box
-    3300002: Plane.1
-    3300004: Plane.1.1
-    3300006: Plane.2
-    3300008: Plane
-    4300000: Box
-    4300002: Plane
-    4300004: Plane.1
-    4300006: Plane.2
-    4300008: Plane.1.1
-    11100000: //RootNode
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Box
+  - first:
+      1: 100002
+    second: //RootNode
+  - first:
+      1: 100004
+    second: Plane.1
+  - first:
+      1: 100006
+    second: Plane.1.1
+  - first:
+      1: 100008
+    second: Plane.2
+  - first:
+      1: 100010
+    second: Plane
+  - first:
+      4: 400000
+    second: Box
+  - first:
+      4: 400002
+    second: //RootNode
+  - first:
+      4: 400004
+    second: Plane.1
+  - first:
+      4: 400006
+    second: Plane.1.1
+  - first:
+      4: 400008
+    second: Plane.2
+  - first:
+      4: 400010
+    second: Plane
+  - first:
+      23: 2300000
+    second: Box
+  - first:
+      23: 2300002
+    second: Plane.1
+  - first:
+      23: 2300004
+    second: Plane.1.1
+  - first:
+      23: 2300006
+    second: Plane.2
+  - first:
+      23: 2300008
+    second: Plane
+  - first:
+      33: 3300000
+    second: Box
+  - first:
+      33: 3300002
+    second: Plane.1
+  - first:
+      33: 3300004
+    second: Plane.1.1
+  - first:
+      33: 3300006
+    second: Plane.2
+  - first:
+      33: 3300008
+    second: Plane
+  - first:
+      43: 4300000
+    second: Box
+  - first:
+      43: 4300002
+    second: Plane
+  - first:
+      43: 4300004
+    second: Plane.1
+  - first:
+      43: 4300006
+    second: Plane.2
+  - first:
+      43: 4300008
+    second: Plane.1.1
+  - first:
+      111: 11100000
+    second: //RootNode
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
-    generateAnimations: 0
+    legacyGenerateAnimations: 0
     bakeSimulation: 0
-    splitAnimations: 1
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMesh: 0
     keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
-    handles: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 0.01
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 0
+  humanoidOversampling: 1
+  avatarSetup: 0
   additionalBone: 1
-  animatorType: 0
-  genericAnimation: 0
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
