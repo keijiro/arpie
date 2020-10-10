@@ -21,7 +21,7 @@ class KeyboardBuilder : MonoBehaviour
             slot.GetComponentInChildren<KeyAudio>().SetKey(0, i);
 
             var source = slot.GetComponentInChildren<AudioSource>();
-            source.panStereo = _panning * (i / _numberOfKeys - 0.5f);
+            source.panStereo = _panning * ((float)i / _numberOfKeys - 0.5f);
             source.volume = _volume - _highDecay * i / _numberOfKeys;
         }
         Destroy(gameObject);
