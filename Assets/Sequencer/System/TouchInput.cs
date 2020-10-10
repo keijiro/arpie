@@ -25,24 +25,23 @@ class TouchInput : MonoBehaviour
     {
         var hit = default(RaycastHit);
         var ray = Camera.main.ScreenPointToRay(screenCoord);
-        if (Physics.Raycast(ray, out hit) && hit.collider)
+        if (!Physics.Raycast(ray, out hit)) return;
+
+        if (hit.collider.name == "Key Cube")
         {
-            if (hit.collider.name == "Key Cube")
+            hit.transform.parent.BroadcastMessage("RemoveArpies");
+            CubeCount++;
+        }
+        else
+        {
+            if (hit.collider.name == "Reset Button")
             {
-                hit.transform.parent.BroadcastMessage("RemoveArpies");
-                CubeCount++;
+                hit.transform.SendMessage("DoReset");
             }
             else
             {
-                if (hit.collider.name == "Reset Button")
-                {
-                    hit.transform.SendMessage("DoReset");
-                }
-                else
-                {
-                    SpawnWithHit(hit);
-                    SpawnCount++;
-                }
+                SpawnWithHit(hit);
+                SpawnCount++;
             }
         }
     }
@@ -50,8 +49,7 @@ class TouchInput : MonoBehaviour
     void SpawnWithHit(RaycastHit hit)
     {
         var interval = int.Parse(hit.collider.name);
-        var go = Instantiate(_arpiePrefab);
-        go.transform.parent = hit.transform.parent.parent;
+        var go = Instantiate(_arpiePrefab, hit.transform.parent.parent);
         go.transform.localPosition = new Vector3(0, interval, 0);
         go.GetComponent<ArpieMovement>().Interval = interval;
     }

@@ -24,6 +24,7 @@ class KeyboardBuilder : MonoBehaviour
             source.panStereo = _panning * ((float)i / _numberOfKeys - 0.5f);
             source.volume = _volume - _highDecay * i / _numberOfKeys;
         }
+
         Destroy(gameObject);
     }
 }

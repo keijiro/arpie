@@ -169,7 +169,7 @@ MonoBehaviour:
   _numberOfKeys: 16
   _panning: 1.2
   _volume: 1
-  _highDecay: 0.06
+  _highDecay: 0.1
   _slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 3}
 --- !u!1 &230811290
 GameObject:
