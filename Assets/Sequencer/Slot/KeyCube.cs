@@ -13,11 +13,10 @@ class KeyCube : MonoBehaviour
         new Color(1, 1, 0.7f)       // Ryukyu
     };
 
-    static int ColorKey = Shader.PropertyToID("_Color");
+    static MaterialPropertyBlock[] _overrides;
 
     Transform _mesh;
     Renderer _renderer;
-    MaterialPropertyBlock _overrides;
 
     float _vibe;
     float _spin;
@@ -26,15 +25,26 @@ class KeyCube : MonoBehaviour
     {
         _mesh = transform.Find("Mesh");
         _renderer = _mesh.GetComponent<Renderer>();
-        _overrides = new MaterialPropertyBlock();
+
+        if (_overrides == null)
+        {
+            _overrides = new MaterialPropertyBlock[BaseColors.Length * 2];
+
+            var colorKey = Shader.PropertyToID("_Color");
+
+            for (var i = 0; i < BaseColors.Length * 2; i++)
+            {
+                var color = BaseColors[i / 2] * (i % 2 != 0 ? 0.7f : 0.9f);
+                _overrides[i] = new MaterialPropertyBlock();
+                _overrides[i].SetColor(colorKey, color);
+            }
+        }
     }
 
     public void SetColor(int scaleIndex, int degree)
     {
-        var value = (degree & 1) != 0 ? 0.7f : 0.9f;
-        var color = BaseColors[scaleIndex % BaseColors.Length] * value;
-        _overrides.SetColor(ColorKey, color);
-        _renderer.SetPropertyBlock(_overrides);
+        var idx = (scaleIndex % BaseColors.Length) * 2 + degree % 2;
+        _renderer.SetPropertyBlock(_overrides[idx]);
     }
 
     void Update()
