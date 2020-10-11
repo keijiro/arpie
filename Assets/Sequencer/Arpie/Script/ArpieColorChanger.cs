@@ -6,28 +6,26 @@ class ArpieColorChanger : MonoBehaviour
 {
     [SerializeField] Color[] _colors = null;
 
-    static Material[] _materials;
+    static MaterialPropertyBlock[] _overrides;
     static int _counter;
 
     void Awake()
     {
-        var renderer = GetComponent<Renderer>();
-
-        if (_materials == null)
+        if (_overrides == null)
         {
-            var sourceMaterial = renderer.material;
+            _overrides = new MaterialPropertyBlock[_colors.Length];
 
-            _materials = new Material[_colors.Length];
+            var colorKey = Shader.PropertyToID("_Color");
 
             for (var i = 0; i < _colors.Length; i++)
             {
-                _materials[i] = new Material(sourceMaterial);
-                _materials[i].color = _colors[i];
+                _overrides[i] = new MaterialPropertyBlock();
+                _overrides[i].SetColor(colorKey, _colors[i]);
             }
         }
 
-        renderer.material = _materials[_counter];
-        _counter = (_counter + 1) % _materials.Length;
+        GetComponent<Renderer>().SetPropertyBlock(_overrides[_counter]);
+        _counter = (_counter + 1) % _colors.Length;
     }
 }
 

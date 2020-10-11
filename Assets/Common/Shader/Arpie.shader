@@ -1,4 +1,4 @@
-Shader "Custom/Gradated Diffuse"
+Shader "Custom/Arpie"
 {
     Properties
     {
@@ -14,17 +14,18 @@ Shader "Custom/Gradated Diffuse"
 
         half4 _Color;
 
-        struct Input { half4 color; };
+        struct Input { half param; };
 
         void vert(inout appdata_full v, out Input o)
         {
-            o.color = lerp(0, _Color, (v.texcoord.y + 0.5) / 2);
+            o.param = v.texcoord.x;
         }
 
         void surf(Input IN, inout SurfaceOutput o)
         {
-            o.Albedo = IN.color.rgb;
+            o.Albedo = _Color.rgb * (IN.param < 0.5);
             o.Alpha = _Color.a;
+            o.Emission = IN.param > 0.75;
         }
 
         ENDCG
