@@ -4,7 +4,7 @@ namespace Arpie {
 
 class KeyCube : MonoBehaviour
 {
-    static Color [] _baseColors = new []
+    static Color [] BaseColors = new []
     {
         new Color(1, 1, 1),         // Pentatonic
         new Color(0.7f, 1, 0.7f),   // Diatonic
@@ -13,8 +13,11 @@ class KeyCube : MonoBehaviour
         new Color(1, 1, 0.7f)       // Ryukyu
     };
 
+    static int ColorKey = Shader.PropertyToID("_Color");
+
     Transform _mesh;
-    Material _material;
+    Renderer _renderer;
+    MaterialPropertyBlock _overrides;
 
     float _vibe;
     float _spin;
@@ -22,13 +25,16 @@ class KeyCube : MonoBehaviour
     void Awake()
     {
         _mesh = transform.Find("Mesh");
-        _material = _mesh.GetComponent<Renderer>().material;
+        _renderer = _mesh.GetComponent<Renderer>();
+        _overrides = new MaterialPropertyBlock();
     }
 
     public void SetColor(int scaleIndex, int degree)
     {
-        var br = (degree & 1) != 0 ? 0.7f : 0.9f;
-        _material.color = _baseColors[scaleIndex % _baseColors.Length] * br;
+        var value = (degree & 1) != 0 ? 0.7f : 0.9f;
+        var color = BaseColors[scaleIndex % BaseColors.Length] * value;
+        _overrides.SetColor(ColorKey, color);
+        _renderer.SetPropertyBlock(_overrides);
     }
 
     void Update()
