@@ -4,9 +4,9 @@ namespace Arpie {
 
 class ArpieColorChanger : MonoBehaviour
 {
-    [SerializeField] Color[] _colors = null;
+    [SerializeField] Color [] _colors = null;
 
-    static MaterialPropertyBlock[] _overrides;
+    static MaterialPropertyBlock [] _overrides;
     static int _counter;
 
     void Awake()

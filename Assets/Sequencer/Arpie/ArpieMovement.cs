@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 namespace Arpie {
 
@@ -14,7 +13,7 @@ class ArpieMovement : MonoBehaviour
     int _step;
     bool _delaying;
 
-    IEnumerator Start()
+    System.Collections.IEnumerator Start()
     {
         // Pause at start.
         _delaying = true;

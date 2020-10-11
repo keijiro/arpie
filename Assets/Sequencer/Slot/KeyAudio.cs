@@ -4,10 +4,10 @@ namespace Arpie {
 
 class KeyAudio : MonoBehaviour
 {
-    static int _baseNote = 60 - 12;
-    static float _clipLength = 0.3f;
+    static int BaseNote = 60 - 12;
+    static float Duration = 0.3f;
 
-    static int [][] _scales = new int [][]
+    static int [][] Scales = new int [][]
     {
         new [] {0, 2, 4, 7, 9},        // Pentatonic
         new [] {0, 2, 4, 5, 7, 9, 11}, // Diatonic
@@ -22,22 +22,22 @@ class KeyAudio : MonoBehaviour
     void Start()
       => _source = GetComponent<AudioSource>();
 
-    public void KeyOn()
+    void KeyOn()
       => _source.PlayOneShot(_clip);
 
     public void SetKey(int scaleIndex, int degree)
     {
-        var intervals = _scales[scaleIndex % _scales.Length];
+        var intervals = Scales[scaleIndex % Scales.Length];
 
         degree += intervals.Length - 2;
 
         var interval = intervals[degree % intervals.Length];
         var octave = degree / intervals.Length;
 
-        var osc = Synth.Oscillator.Note(_baseNote + octave * 12 + interval);
+        var osc = Synth.Oscillator.Note(BaseNote + octave * 12 + interval);
         var env = Synth.Envelope.Default();
 
-        var samples = new float[(int)(Synth.Config.SampleRate * _clipLength)];
+        var samples = new float[(int)(Synth.Config.SampleRate * Duration)];
 
         for (var i = 0; i < samples.Length; i++)
             samples[i] = osc.Run() * env.Run();

@@ -13,7 +13,7 @@ class KeyCube : MonoBehaviour
         new Color(1, 1, 0.7f)       // Ryukyu
     };
 
-    static MaterialPropertyBlock[] _overrides;
+    static MaterialPropertyBlock [] _overrides;
 
     Transform _mesh;
     Renderer _renderer;

@@ -6,34 +6,28 @@ class ArpieDestructor : MonoBehaviour
 {
     [SerializeField] GameObject _explosion = null;
 
-    Vector3 _initPosition;
-    float _time = 1;
-
-    void Update()
+    System.Collections.IEnumerator RemoveArpies()
     {
-        _time -= Time.deltaTime * 5;
+        var initPosition = transform.position;
 
-        if (_time > 0)
+        for (var t = 0.0f; t < 0.2f; t += Time.deltaTime)
         {
-            var vibe = _time * _time * _time * _time * 0.4f;
+            var param = 1 - t * 5;
+            var phase = 0.75f * Mathf.PI * param;
+            var vibe = param * param * param * param * 0.4f;
+            var scale = (1 - Mathf.Abs(Mathf.Cos(phase))) * 1.2f + 0.5f;
 
-            var scale = Mathf.Abs(Mathf.Cos(0.75f * Mathf.PI * _time));
-            scale = (1 - scale) * 1.2f + 0.5f;
-
-            transform.position = _initPosition + Random.onUnitSphere * vibe;
+            transform.position = initPosition + Random.onUnitSphere * vibe;
             transform.localScale = Vector3.one * scale;
-        }
-        else if (_time < -0.2f)
-        {
-            Instantiate(_explosion, transform.position, transform.rotation);
-            Destroy(gameObject);
-        }
-    }
 
-    void RemoveArpies()
-    {
-        _initPosition = transform.position;
-        enabled = true;
+            yield return null;
+        }
+
+        for (var t = 0.0f; t < 0.03f; t += Time.deltaTime)
+            yield return null;
+
+        Instantiate(_explosion, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
 
