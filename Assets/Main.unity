@@ -181,7 +181,6 @@ GameObject:
   m_Component:
   - component: {fileID: 230811291}
   - component: {fileID: 230811292}
-  - component: {fileID: 230811295}
   - component: {fileID: 230811293}
   - component: {fileID: 230811297}
   - component: {fileID: 230811296}
@@ -275,14 +274,6 @@ MonoBehaviour:
   _fadingDelay: 0.1
   _fadingSpeed: 0.5
   _shader: {fileID: 4800000, guid: e5002fdce4eb6734fa92a91fbf80a8c8, type: 3}
---- !u!124 &230811295
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230811290}
-  m_Enabled: 1
 --- !u!164 &230811296
 AudioReverbFilter:
   m_ObjectHideFlags: 0
