@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _numberOfKeys: 16
   _panning: 1.2
-  _volume: 1
+  _volume: 0.35
   _highDecay: 0.12
   _slotPrefab: {fileID: 100004, guid: 6c9e262781a3745c796c3387bedaa58b, type: 3}
 --- !u!1 &230811290
@@ -182,8 +182,6 @@ GameObject:
   - component: {fileID: 230811291}
   - component: {fileID: 230811292}
   - component: {fileID: 230811293}
-  - component: {fileID: 230811297}
-  - component: {fileID: 230811296}
   - component: {fileID: 230811294}
   - component: {fileID: 230811298}
   m_Layer: 0
@@ -247,7 +245,7 @@ Camera:
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &230811293
@@ -274,41 +272,6 @@ MonoBehaviour:
   _fadingDelay: 0.1
   _fadingSpeed: 0.5
   _shader: {fileID: 4800000, guid: e5002fdce4eb6734fa92a91fbf80a8c8, type: 3}
---- !u!164 &230811296
-AudioReverbFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230811290}
-  m_Enabled: 1
-  m_DryLevel: 0
-  m_Room: -1200
-  m_RoomHF: -500
-  m_DecayTime: 3.2
-  m_DecayHFRatio: 0.7
-  m_ReflectionsLevel: -700
-  m_ReverbLevel: -300
-  m_ReverbDelay: 0.033
-  m_Diffusion: 100
-  m_Density: 80
-  m_HFReference: 5000
-  m_RoomLF: -50
-  m_LFReference: 250
-  m_ReflectionsDelay: 0.2
-  m_ReverbPreset: 27
---- !u!168 &230811297
-AudioEchoFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 230811290}
-  m_Enabled: 1
-  m_Delay: 375
-  m_DecayRatio: 0.3
-  m_WetMix: 0.12
-  m_DryMix: 0.88
 --- !u!114 &230811298
 MonoBehaviour:
   m_ObjectHideFlags: 0
